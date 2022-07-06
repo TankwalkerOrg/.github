@@ -1,10 +1,6 @@
 name: Project automation
 
 on:
-  issues:
-      types:
-       - created
-       - labelled
   workflow_call:
 
 jobs:
