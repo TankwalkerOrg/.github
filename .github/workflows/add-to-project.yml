@@ -2,6 +2,8 @@ name: Project automation
 
 on:
   workflow_call:
+    inputs:
+      issue
 
 jobs:
   add-to-project:
@@ -11,6 +13,6 @@ jobs:
       - uses: actions/add-to-project@main
         with:
           project-url: https://github.com/users/tankwalker/projects/1
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PROJECT_AUTOMATION_TOKEN }}
           labeled: ''
           label-operator: OR
