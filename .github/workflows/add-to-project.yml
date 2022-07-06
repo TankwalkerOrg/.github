@@ -1,10 +1,7 @@
-name: Add issues to project
+name: Add bugs to bugs project
 
 on:
-  issues:
-    types:
-      - opened
-      - labelled
+  workflow_call
 
 jobs:
   add-to-project:
@@ -14,6 +11,6 @@ jobs:
       - uses: actions/add-to-project@main
         with:
           project-url: https://github.com/users/tankwalker/projects/1
-          github-token: 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
-          #labeled: bug
-          #label-operator: OR
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          labeled: ''
+          label-operator: OR
