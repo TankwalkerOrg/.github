@@ -1,7 +1,7 @@
-name: Add bugs to bugs project
+name: Project automation
 
 on:
-  workflow_call
+  workflow_call:
 
 jobs:
   add-to-project:
