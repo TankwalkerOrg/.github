@@ -1,7 +1,22 @@
 # Jira automation
 name: Jira Automation
 
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      project:
+        required: true
+        type: string
+      issuetype:
+        required: false
+        type: string
+        default: 'Bug'
+      summary:
+        required: true
+        type: string
+      description:
+        required: false
+        type: string
 
 jobs:
   build:
@@ -19,13 +34,10 @@ jobs:
       id: create
       uses: atlassian/gajira-create@master
       with:
-        project: ${{ inputs.project_name }}
-        issuetype: Build
-        summary: |
-          Build completed for ${{ github.repository }}
-        description: |
-          Compare branch
-        fields: '{"customfield_10171": "test"}'
+        project: ${{ inputs.project }}
+        issuetype: ${{ inputs.issuetype }}
+        summary: ${{ inputs.summary }}
+        description: ${{ inputs.description }}
 
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
