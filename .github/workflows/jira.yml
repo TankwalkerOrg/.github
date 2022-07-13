@@ -14,9 +14,11 @@ on:
       summary:
         required: true
         type: string
+        default: ${{ github.event.issue.title }}
       description:
         required: false
         type: string
+        default: ${{ github.event.issue.description }}
 
 jobs:
   build:
